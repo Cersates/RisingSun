@@ -1,0 +1,19 @@
+/*  This template was created by Mantis-a [http://www.mantisa.cz/]. For more templates visit Free website templates [http://www.mantisatemplates.com/]. */
+
+
+
+/* CSS Document for IE 6 and lower */
+
+
+.date {
+_height: 40px;
+}
+
+#menu li a.kuk span.tab-r {
+position: absolute; 
+top: 0;
+right: -1px;
+width: 12px;
+height: 16px;
+background: url('../img/tab-r.gif') no-repeat 100% 0;
+}
