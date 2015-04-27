@@ -1,10 +1,10 @@
 package com.dataart.risingsun.app.controller.service;
 
-import org.hibernate.HibernateException;
-import org.hibernate.Query;
-import org.hibernate.Session;
+import java.util.List;
 
-import com.dataart.risingsun.app.controller.connection.SessionFactoryManager;
+import org.hibernate.criterion.Restrictions;
+
+import com.dataart.risingsun.app.controller.connection.DAOManager;
 import com.dataart.risingsun.app.model.instances.User;
 
 /**
@@ -21,28 +21,11 @@ public class InstanceServiceManager {
      */
     public static boolean validateUser(User user)
     {
-	User u = null;
-	Session session = null;
-	try
-	{
-	    session = SessionFactoryManager.getSessionFactory().openSession();
-	    Query query = session
-		    .createQuery(String
-			    .format("SELECT u FROM %s u WHERE u.login=:login AND u.password=:password",
-				    user.getClass().getSimpleName()));
-	    query.setParameter("login", user.getLogin());
-	    query.setParameter("password", user.getPassword());
-	    u = (User) query.uniqueResult();
-	}
-	catch (HibernateException e)
-	{
-	    System.err.println(e.getLocalizedMessage());
-	}
-	finally
-	{
-	    if (null != session && session.isOpen())
-		session.close();
-	}
-	return u != null;
+	List<User> list = (List<User>) DAOManager.getInstanceList(User.class, 
+		Restrictions.eq("login", user.getLogin()), 
+		Restrictions.eq("password", user.getPassword()));
+	if (list.size() > 1)
+	    System.err.println("Alert!!!!!!!! Something wrong with Users table");
+	return list.size() == 1;
     }
 }

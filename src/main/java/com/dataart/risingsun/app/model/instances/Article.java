@@ -23,7 +23,6 @@ public class Article implements RSInstance {
     @JoinColumn(name="user_id")
     private User author;
     
-    private int cathegory;
     private String description;
     private Date date;
     @Lob
@@ -53,16 +52,6 @@ public class Article implements RSInstance {
     public void setAuthor(User author)
     {
         this.author = author;
-    }
-
-    public int getCathegory()
-    {
-        return cathegory;
-    }
-
-    public void setCathegory(int cathegory)
-    {
-        this.cathegory = cathegory;
     }
 
     public String getDescription()

@@ -85,8 +85,7 @@ public class DAOManager {
      * @param instance
      * @return
      */
-    public static <T extends RSInstance> List<T> getInstanceList(
-	    Class<T> instance)
+    public static <T extends RSInstance> List<T> getInstanceList(Class<T> instance)
     {
 	String query = "Select u FROM " + instance.getSimpleName() + " u";
 	Session session = SessionFactoryManager.getSessionFactory()
@@ -108,10 +107,12 @@ public class DAOManager {
     public static <T extends RSInstance> Collection<T> getInstanceList(Class<T> instanceClass, Criterion... criterion)
     {
 	Collection<T> list = new ArrayList<>();
+	Session session = null;
 	Criteria criteria = null;
 	try
 	{
-	    criteria = SessionFactoryManager.getSessionFactory().openSession().createCriteria(instanceClass);
+	    session = SessionFactoryManager.getSessionFactory().openSession();
+	    criteria = session.createCriteria(instanceClass);
 	    if (null != criterion && criterion.length > 0)
 	    {
 	        for (Criterion crit : criterion)
@@ -119,13 +120,18 @@ public class DAOManager {
 	    		criteria.add(crit);
 	        }
 	    }
+	    if (null != criteria)
+		list.addAll(criteria.list());
 	}
 	catch (HibernateException e)
 	{
 	    System.err.println("getInstanceList(class, Criterion) " + e.getMessage());
 	}
-	if (null != criteria)
-	    list.addAll(criteria.list());
+	finally
+	{
+	    if (null != session && session.isOpen())
+		session.close();
+	}
 	return list;
     }
 
@@ -153,8 +159,7 @@ public class DAOManager {
      * @param instanceClass
      *            - Class of instance
      */
-    public static <T extends RSInstance> void deleteInstance(int id,
-	    Class<T> instanceClass)
+    public static <T extends RSInstance> void deleteInstance(int id, Class<T> instanceClass)
     {
 	Session session = null;
 	try

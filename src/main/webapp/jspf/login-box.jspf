@@ -4,7 +4,8 @@
 <div id="login-box">
 
 	<%
-	    if (session != null)
+		String auth = (String)session.getAttribute("auth");
+	    if (auth == null)
 	    {
 	%>
 	<div id="unsigned">
@@ -35,13 +36,17 @@
 	    {
 	%>
 	<div id="signed">
-		<h4>About me</h4>
-		<img class="me" src="resources/img/me.jpg" alt="Me" width="65"
+		<h4>Hello ${auth}</h4>
+		<img class="me" src="resources/img/me.gif" alt="Me" width="65"
 			height="70" />
 		<p>
-			Hi, my name is Petr. I'm intersted in science, computers and
+			Hi, my name is <span>${auth}</span>. I'm intersted in science, computers and
 			swimming. For more information visit <a href="#">Author</a>.
 		</p>
+		<form action="<%=Constants.HOME %>/LoginController" method="post">
+			<input type="hidden" name="logout" />
+			<input type="submit" value="Logout" />
+		</form>
 	</div>
 	<%
 	    }
