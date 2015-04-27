@@ -1,0 +1,56 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ page import="com.dataart.risingsun.app.Constants"%>
+<%@ page import="com.dataart.risingsun.app.model.instances.User"%>
+<div id="login-box">
+
+	<%
+		final User auth = (User)request.getSession().getAttribute("auth");
+	    if (auth == null)
+	    {
+	%>
+	<div id="unsigned">
+		<h4 align="center">Sign In</h4>
+		<%
+			if (request.getAttribute("errorMessage") != null)
+			{
+		%>
+		<p id="errorMessage">${errorMessage}</p> 
+		<%	} %>
+		<form action="<%=Constants.HOME %>/LoginController" method="post">
+			<label for="input_login">Login</label> 
+			<input type="text" name="input_login" maxlength="<%=Constants.MAX_LOGIN_LENGTH%>"> 
+			<label for="input_password">Password</label>
+			<input type="password" name="input_password" maxlength="<%=Constants.MAX_PASSWORD_LENGTH%>">
+			<input type="submit" id="submit" value="Sign">
+			<span>
+				<a href="<%=Constants.HOME%>/registration.jsp">register</a>
+				<span>/</span>
+				<a href="#">forgot</a>
+			</span>
+			
+		</form>
+	</div>
+	<%
+	    }
+	    else
+	    {
+	%>
+	<div id="signed">
+		<h4>Hello <%= auth.getName() %></h4>
+		<img class="me" src="resources/img/me.gif" alt="Me" width="65"
+			height="70" />
+		<p>
+			Hi, my name is <span class="error"><%= auth.getName() %></span>. I'm intersted in science, computers and
+			swimming. For more information visit <a href="#">Author</a>.
+		</p>
+		<form action="<%=Constants.HOME %>/LoginController" method="post">
+			<input type="hidden" name="logout" />
+			<input type="submit" value="Logout" />
+		</form>
+	</div>
+	<%
+	    }
+	%>
+
+</div>

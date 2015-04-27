@@ -1,0 +1,17 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!-- Your website name  -->
+			<h1>
+				<a href="<%=Constants.HOME%>">Rising Sun</a>
+			</h1>
+			<!-- Your website name end -->
+
+			<!-- Slogan for your blog -->
+			<h2>Lorem ipsum dolor sit amet, consectetuer&hellip;</h2>
+			<!-- Slogan for your blog end -->
+
+			<!-- Search form -->
+			<%@ include file="/jspf/search-form.jspf"%>
+			<!-- Search form end -->
+
+			<a href="#skip-menu" class="hidden">Skip menu</a>
+
