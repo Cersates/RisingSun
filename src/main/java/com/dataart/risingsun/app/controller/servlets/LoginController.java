@@ -1,6 +1,7 @@
 package com.dataart.risingsun.app.controller.servlets;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -8,8 +9,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.hibernate.criterion.Restrictions;
+
 import com.dataart.risingsun.app.Constants;
-import com.dataart.risingsun.app.controller.service.InstanceServiceManager;
+import com.dataart.risingsun.app.controller.connection.DAOManager;
 import com.dataart.risingsun.app.model.instances.User;
 
 /**
@@ -35,17 +38,18 @@ public class LoginController extends HttpServlet {
 	}
 	else
 	{
-	    User user = new User();
-	    user.setLogin(inputLogin);
-	    user.setPassword(inputPassword.toCharArray());
-	    if (!InstanceServiceManager.validateUser(user))
+	    List<User> list = (List<User>) DAOManager.getInstanceList(User.class, 
+		    Restrictions.eq("login", inputLogin),
+		    Restrictions.eq("password", inputPassword.toCharArray()));
+	    if (list.size() != 1)
 	    {
 		req.setAttribute("errorMessage", "Incorrect login or password");
-	    req.getRequestDispatcher("/index.jsp").forward(req, resp);
+		req.getRequestDispatcher("/index.jsp").forward(req, resp);
 	    }
 	    else if (inputLogin != null)
 	    {
-		session.setAttribute("auth", inputLogin);
+		User user = list.get(0);
+		session.setAttribute("auth", user);
 		resp.sendRedirect(Constants.HOME);
 	    }
 	}

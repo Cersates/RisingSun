@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="com.dataart.risingsun.app.Constants"%>
+<%@ page import="com.dataart.risingsun.app.model.instances.User"%>
 <div id="login-box">
 
 	<%
-		String auth = (String)session.getAttribute("auth");
+		final User auth = (User)request.getSession().getAttribute("auth");
 	    if (auth == null)
 	    {
 	%>
@@ -36,11 +37,11 @@
 	    {
 	%>
 	<div id="signed">
-		<h4>Hello ${auth}</h4>
+		<h4>Hello <%= auth.getName() %></h4>
 		<img class="me" src="resources/img/me.gif" alt="Me" width="65"
 			height="70" />
 		<p>
-			Hi, my name is <span>${auth}</span>. I'm intersted in science, computers and
+			Hi, my name is <span class="error"><%= auth.getName() %></span>. I'm intersted in science, computers and
 			swimming. For more information visit <a href="#">Author</a>.
 		</p>
 		<form action="<%=Constants.HOME %>/LoginController" method="post">
