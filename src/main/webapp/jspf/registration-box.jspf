@@ -1,0 +1,32 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ page import="com.dataart.risingsun.app.Constants"%>
+	<h1>Registration form</h1>
+	<% if (request.getAttribute("errorPresents") != null && !(boolean)(request.getAttribute("errorPresents"))) {%>
+		<p>Registration successful</p>
+	<%} else {%>
+		<form action="<%=Constants.HOME %>/RegistrationController" method="post">
+		
+			<label for="name">Your Name</label><br>
+			<%if (request.getAttribute("nameError") != null) { %>
+			<p class="error">${nameError}</p><% } %>
+			<input type="text" name="name" /><br>
+			<%if (request.getAttribute("existsName") != null) {%>
+			<p class="error">${existsName}</p>
+			<%} %>
+			<label for="login">Login (max. <%=Constants.MAX_LOGIN_LENGTH%> characters)</label><br>
+			<%if (request.getAttribute("loginError") != null) { %>
+			<p class="error">${loginError}</p><% } %>
+			<input type="text" name="login" maxlength="<%=Constants.MAX_LOGIN_LENGTH%>"/><br>
+			<%if (request.getAttribute("existsLogin") != null) {%>
+			<p class="error">${existsLogin}</p>
+			<%} %>
+			<label for="password">Password (max. <%=Constants.MAX_PASSWORD_LENGTH%> characters)</label><br>
+			<%if (request.getAttribute("passwordError") != null) { %>
+			<p class="error">${passwordError}</p><% } %>
+			<input type="password" name="password" maxlength="<%=Constants.MAX_PASSWORD_LENGTH%>"><br>
+			
+			<input type="submit" name="submit" value="register"><br>
+		</form>
+		<% } %>
+	

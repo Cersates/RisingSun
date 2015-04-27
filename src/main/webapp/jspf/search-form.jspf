@@ -1,0 +1,16 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<form class="searching" action="">
+	<fieldset>
+		<label></label>
+		<div id="picture-input">
+			<input type="text" class="search"
+				onfocus="if(this.value==this.defaultValue)this.value=''"
+				onblur="if(this.value=='')this.value=this.defaultValue"
+				value="Search&hellip;" />
+		</div>
+		<input class="hledat" type="image"
+			src="resources/img/search-button.gif" name="" value="Search"
+			alt="Search" />
+	</fieldset>
+</form>

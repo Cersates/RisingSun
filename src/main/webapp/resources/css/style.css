@@ -452,12 +452,46 @@ float: right;
 }
 
 .content-box-right-in {
-margin: 0 15px 10px 11px;
+margin: 0 9px 10px 0;
 color: #003B69;
 }
 
 
 /* Content right directives */
+
+#login-box {
+	margin-bottom: 40px;
+	padding-bottom: 10px;
+	padding-left:10px;
+	position: relative;
+	border-top: 1px solid #b3cee5;
+	border-bottom: 1px solid #b3cee5;
+	top: 40px;
+	background-color: #c8dff2;
+}
+#login-box h3 {
+	text-align: center;
+}
+#login-box #errorMessage {
+	color: red;
+}
+#login-box #submit {
+	padding: 5px;
+}
+
+#registration-box {
+	height: 400px;
+	text-align: center;
+}
+#registration-box h1 {
+	text-align: center;
+	margin-bottom: 40px;
+	color: black;
+}
+
+.error {
+	color: red;
+}
 
 .content-box-right-in p {
 margin: 0;

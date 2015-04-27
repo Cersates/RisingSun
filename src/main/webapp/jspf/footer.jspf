@@ -1,0 +1,12 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<div id="footer">
+	<div id="footer-in">
+		<p>
+			&copy; <a href="#">My blog</a>, 2008. | Powered by&hellip; | <a
+				href="http://www.mantisatemplates.com/">Free web templates</a> by <a
+				href="http://www.mantisa.cz/">Mantis-a</a> | <span>&uarr;</span> <a
+				href="#top"><span>Top</span></a>
+		</p>
+	</div>
+</div>
