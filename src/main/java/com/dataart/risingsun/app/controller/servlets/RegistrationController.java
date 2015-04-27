@@ -1,11 +1,14 @@
 package com.dataart.risingsun.app.controller.servlets;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.hibernate.criterion.Restrictions;
 
 import com.dataart.risingsun.app.controller.connection.DAOManager;
 import com.dataart.risingsun.app.model.instances.User;
@@ -42,6 +45,18 @@ public class RegistrationController extends HttpServlet {
 	{
 	    request.setAttribute("passwordError", allowed);
 	    errorPresents = true;
+	}
+	List<User> matches =  (List<User>) DAOManager.getInstanceList(User.class, Restrictions.eq("name", name), Restrictions.eq("login", login));
+	if (matches.size() > 0)
+	{
+	    errorPresents = true;
+	    for (User user : matches)
+	    {
+		if (user.getName().equals(name))
+		    request.setAttribute("existsName", "Name already exists. Try another");
+		if (user.getLogin().equals(login))
+		    request.setAttribute("existsLogin", "Login already exists. Try another");
+	    }
 	}
 	if (!errorPresents)
 	{

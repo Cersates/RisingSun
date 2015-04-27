@@ -20,7 +20,7 @@ public class Article implements RSInstance {
     private String title;
     
     @ManyToOne
-    @JoinColumn(name="id")
+    @JoinColumn(name="user_id")
     private User author;
     
     private int cathegory;

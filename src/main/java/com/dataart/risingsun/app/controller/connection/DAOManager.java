@@ -1,11 +1,21 @@
 package com.dataart.risingsun.app.controller.connection;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map.Entry;
+import java.util.Properties;
+import java.util.Set;
 
+import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.Restrictions;
+
 import com.dataart.risingsun.app.model.instances.RSInstance;
 
 /**
@@ -34,11 +44,12 @@ public class DAOManager {
 	    }
 	    System.err.println(instance.getClass().getName()
 		    + " Save was unsuccessful. Rollback");
+//	    e.printStackTrace();
 	    return false;
 	}
 	finally
 	{
-	    if (session.isOpen())
+	    if (null != session && session.isOpen())
 	    {
 		session.close();
 	    }
@@ -92,6 +103,37 @@ public class DAOManager {
 	List<T> list = que.list();
 	session.close();
 	return (List<T>) list;
+    }
+    
+    /**
+     * Get Instance list with necessary criteria.
+     * @param instanceClass
+     * @param criterion
+     * @return
+     */
+    @SuppressWarnings("unchecked")
+    public static <T extends RSInstance> Collection<T> getInstanceList(Class<T> instanceClass, Criterion... criterion)
+    {
+	Collection<T> list = new ArrayList<>();
+	Criteria criteria = null;
+	try
+	{
+	    criteria = SessionFactoryManager.getSessionFactory().openSession().createCriteria(instanceClass);
+	    if (criterion.length > 0)
+	    {
+	        for (Criterion crit : criterion)
+	        {
+	    		criteria.add(crit);
+	        }
+	    }
+	}
+	catch (HibernateException e)
+	{
+	    System.err.println("getInstanceList(class, Criterion) " + e.getMessage());
+	}
+	if (null != criteria)
+	    list.addAll(criteria.list());
+	return list;
     }
 
     @SuppressWarnings("hiding")
