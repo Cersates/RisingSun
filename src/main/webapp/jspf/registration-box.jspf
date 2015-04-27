@@ -10,7 +10,7 @@
 			<label for="name">Your Name</label><br>
 			<%if (request.getAttribute("nameError") != null) { %>
 			<p class="error">${nameError}</p><% } %>
-			<input type="text" name="name" />
+			<input type="text" name="name" /><br>
 			<%if (request.getAttribute("existsName") != null) {%>
 			<p class="error">${existsName}</p>
 			<%} %>
