@@ -2,20 +2,13 @@ package com.dataart.risingsun.app.controller.connection;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Map.Entry;
-import java.util.Properties;
-import java.util.Set;
-
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Criterion;
-import org.hibernate.criterion.Restrictions;
-
 import com.dataart.risingsun.app.model.instances.RSInstance;
 
 /**
