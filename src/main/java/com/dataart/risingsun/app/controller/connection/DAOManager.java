@@ -112,7 +112,7 @@ public class DAOManager {
 	try
 	{
 	    criteria = SessionFactoryManager.getSessionFactory().openSession().createCriteria(instanceClass);
-	    if (criterion.length > 0)
+	    if (null != criterion && criterion.length > 0)
 	    {
 	        for (Criterion crit : criterion)
 	        {

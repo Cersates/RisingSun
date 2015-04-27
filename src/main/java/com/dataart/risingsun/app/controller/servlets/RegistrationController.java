@@ -46,7 +46,9 @@ public class RegistrationController extends HttpServlet {
 	    request.setAttribute("passwordError", allowed);
 	    errorPresents = true;
 	}
-	List<User> matches =  (List<User>) DAOManager.getInstanceList(User.class, Restrictions.eq("name", name), Restrictions.eq("login", login));
+	List<User> matches =  (List<User>) DAOManager.getInstanceList(User.class, 
+		Restrictions.eq("name", name), 
+		Restrictions.eq("login", login));
 	if (matches.size() > 0)
 	{
 	    errorPresents = true;
