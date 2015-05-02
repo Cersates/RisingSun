@@ -10,7 +10,7 @@
 				value="Search&hellip;" />
 		</div>
 		<input class="hledat" type="image"
-			src="resources/img/search-button.gif" name="" value="Search"
+			src="img/search-button.gif" name="" value="Search"
 			alt="Search" />
 	</fieldset>
 </form>

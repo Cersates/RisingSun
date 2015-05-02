@@ -144,7 +144,7 @@ public class DAOManager {
 		.openSession();
 	session.beginTransaction();
 	inst = (RSInstance) session.get(instanceClass, id);
-	if (session.isOpen())
+	if (session != null && session.isOpen())
 	{
 	    session.close();
 	}

@@ -25,8 +25,8 @@
 			<input type="submit" id="submit" value="Sign">
 			<span>
 				<a href="<%=Constants.HOME%>/registration.jsp">register</a>
-				<span>/</span>
-				<a href="#">forgot</a>
+<!-- 				<span>/</span>
+				<a href="#">forgot</a> -->
 			</span>
 			
 		</form>
@@ -44,6 +44,11 @@
 			Hi, my name is <span class="error"><%= auth.getName() %></span>. I'm intersted in science, computers and
 			swimming. For more information visit <a href="#">Author</a>.
 		</p>
+		<div id="cabinet">
+			<ul>
+				<li><a href="#">Cabinet</a>
+			</ul>
+		</div>
 		<form action="<%=Constants.HOME %>/LoginController" method="post">
 			<input type="hidden" name="logout" />
 			<input type="submit" value="Logout" />

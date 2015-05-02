@@ -1,0 +1,43 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:forEach items="${article_list.list}" varStatus="vs">
+	<div class="article">
+		<div class="date">
+			<p class="day">
+				<span>18th</span>
+			</p>
+			<p>02/08</p>
+		</div>
+		<h3>
+			<a href="#">My newest article about&hellip;</a>
+		</h3>
+		<div class="info">
+			<div class="info-in">
+				<p>
+					In <a href="#">Category4</a> &nbsp;|&nbsp; Author <a href="#">Name</a>
+					&nbsp;|&nbsp; <a href="#">23 comments</a> &nbsp;|&nbsp; <a href="#">RSS
+						comments</a>
+				</p>
+			</div>
+		</div>
+
+		<p>${msg}</p>
+		<p>
+			<img class="float" src="img/flower.jpg" alt="flower" width="128"
+				height="96" /> Lorem ipsum dolor sit amet, consectetuer adipiscing
+			elit. Nam vulputate turpis vel mauris. Aenean sapien mauris, ultrices
+			sed, rhoncus at, pellentesque sed, lectus. In hac habitasse platea
+			dictumst. Donec adipiscing, mauris eu varius consectetuer, nulla orci
+			iaculis neque, ac rhoncus est lacus in augue. Maecenas ac dolor.
+			Vestibulum semper eleifend arcu. Sed leo. Suspendisse vestibulum
+			dolor sed eros ullamcorper tincidunt. Nulla at sapien vel mi
+			fermentum adipiscing. Sed sit amet orci vel nisl mattis pretium.
+			Nullam tristique mi eu magna. Duis odio ante, suscipit non, iaculis
+			et, porta malesuada, neque. Suspendisse fringilla, purus dictum
+			pretium nonummy, leo leo ullamcorper felis, id semper quam neque sit
+			amet ante. Ut nec mi. Ut congue massa fermentum justo.
+		</p>
+		<p class="continue">
+			[<a href="#">Continue&hellip;</a>]
+		</p>
+	</div>
+</c:forEach>
