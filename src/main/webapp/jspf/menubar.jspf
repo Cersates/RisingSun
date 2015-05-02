@@ -1,15 +1,17 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-		<div>
-			<!-- Menu -->
-			<ul id="menu">
-				<li id="active"><a href="<%= Constants.HOME %>">Home<span class="tab-l"></span><span
-						class="tab-r"></span></a></li>
-				<li><a href="#" class="kuk">Photos<span class="tab-l"></span><span
-						class="tab-r"></span></a></li>
-				<li><a href="#">Contact<span class="tab-l"></span><span
-						class="tab-r"></span></a></li>
-				<li><a href="#" class="kuk">Links<span class="tab-l"></span><span
-						class="tab-r"></span></a></li>
-			</ul>
-			<!-- Menu end -->
-		</div>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ page import="com.dataart.risingsun.app.Constants" %>
+<div>
+	<!-- Menu -->
+	<ul id="menu">
+		<li id="active"><a href="<%=Constants.HOME%>">Home<span
+				class="tab-l"></span><span class="tab-r"></span></a></li>
+		<li><a href="#">Contact<span class="tab-l"></span><span
+				class="tab-r"></span></a></li>
+		<li><a href="#" class="kuk">Links<span class="tab-l"></span><span
+				class="tab-r"></span></a></li>
+		<li><a href="#" class="kuk">Archive<span class="tab-l"></span><span
+				class="tab-r"></span></a></li>
+	</ul>
+	<!-- Menu end -->
+</div>

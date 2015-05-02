@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="com.dataart.risingsun.app.Constants"%>
 	<h1>Registration form</h1>
-	<% if (request.getAttribute("errorPresents") != null && !(boolean)(request.getAttribute("errorPresents"))) {%>
+	<% if (request.getAttribute("errorPresents") != null && !(Boolean)request.getAttribute("errorPresents")) {%>
 		<p>Registration successful</p>
 	<%} else {%>
 		<form action="<%=Constants.HOME %>/RegistrationController" method="post">
