@@ -1,14 +1,16 @@
-package com.dataart.risingsun.app.controller.connection;
+package com.dataart.risingsun.connection;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Criterion;
-import com.dataart.risingsun.app.model.instances.RSInstance;
+
+import com.dataart.risingsun.model.RSInstance;
 
 /**
  * 

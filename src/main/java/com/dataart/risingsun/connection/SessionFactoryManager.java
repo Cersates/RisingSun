@@ -1,4 +1,4 @@
-package com.dataart.risingsun.app.controller.connection;
+package com.dataart.risingsun.connection;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;

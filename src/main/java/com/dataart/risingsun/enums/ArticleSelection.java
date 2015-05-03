@@ -1,4 +1,4 @@
-package com.dataart.risingsun.app.model.enums;
+package com.dataart.risingsun.enums;
 
 public enum ArticleSelection
 {

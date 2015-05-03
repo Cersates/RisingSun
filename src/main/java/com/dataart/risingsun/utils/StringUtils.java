@@ -1,4 +1,4 @@
-package com.dataart.risingsun.app.utils;
+package com.dataart.risingsun.utils;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

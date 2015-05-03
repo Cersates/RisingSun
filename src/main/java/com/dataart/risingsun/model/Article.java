@@ -1,4 +1,4 @@
-package com.dataart.risingsun.app.model.instances;
+package com.dataart.risingsun.model;
 
 import java.util.Date;
 

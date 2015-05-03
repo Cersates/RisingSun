@@ -7,11 +7,11 @@ import org.hibernate.criterion.Restrictions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.dataart.risingsun.app.controller.connection.DAOManager;
-import com.dataart.risingsun.app.controller.connection.SessionFactoryManager;
-import com.dataart.risingsun.app.controller.service.DAOServiceManager;
-import com.dataart.risingsun.app.model.instances.Article;
-import com.dataart.risingsun.app.model.instances.User;
+import com.dataart.risingsun.connection.DAOManager;
+import com.dataart.risingsun.connection.SessionFactoryManager;
+import com.dataart.risingsun.model.Article;
+import com.dataart.risingsun.model.User;
+import com.dataart.risingsun.service.DAOServiceManager;
 
 public class Main {
     private static final Logger LOGGER = LoggerFactory.getLogger(Main.class);
@@ -53,5 +53,6 @@ public class Main {
             }
             
         }
+        SessionFactoryManager.getSessionFactory().close();
     }
 }

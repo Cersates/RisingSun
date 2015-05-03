@@ -1,4 +1,4 @@
-package com.dataart.risingsun.app.controller.servlets;
+package com.dataart.risingsun.controller;
 
 import java.util.List;
 
@@ -6,9 +6,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.dataart.risingsun.app.controller.service.DAOServiceManager;
-import com.dataart.risingsun.app.model.enums.ArticleSelection;
-import com.dataart.risingsun.app.model.instances.Article;
+import com.dataart.risingsun.enums.ArticleSelection;
+import com.dataart.risingsun.model.Article;
+import com.dataart.risingsun.service.DAOServiceManager;
 /**
  * 
  * @author kapitoha

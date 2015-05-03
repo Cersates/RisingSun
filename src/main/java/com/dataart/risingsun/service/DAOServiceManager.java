@@ -1,14 +1,14 @@
-package com.dataart.risingsun.app.controller.service;
+package com.dataart.risingsun.service;
 
 import java.util.List;
 
 import org.hibernate.criterion.Restrictions;
 
-import com.dataart.risingsun.app.controller.connection.DAOManager;
-import com.dataart.risingsun.app.model.enums.ArticleSelection;
-import com.dataart.risingsun.app.model.enums.UserRights;
-import com.dataart.risingsun.app.model.instances.Article;
-import com.dataart.risingsun.app.model.instances.User;
+import com.dataart.risingsun.connection.DAOManager;
+import com.dataart.risingsun.enums.ArticleSelection;
+import com.dataart.risingsun.enums.UserRights;
+import com.dataart.risingsun.model.Article;
+import com.dataart.risingsun.model.User;
 
 /**
  * (DAOService)
