@@ -19,6 +19,7 @@ import com.dataart.risingsun.app.utils.StringUtils;
  * @author kapitoha
  *
  */
+@Deprecated
 public class RegistrationController extends HttpServlet {
     private static final long serialVersionUID = 1L;
 

@@ -20,6 +20,7 @@ import com.dataart.risingsun.app.model.instances.User;
  * @author kapitoha
  *
  */
+@Deprecated
 public class LoginController extends HttpServlet {
     private static final long serialVersionUID = 1L;
 

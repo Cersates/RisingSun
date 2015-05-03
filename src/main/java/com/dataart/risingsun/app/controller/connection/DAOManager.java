@@ -1,7 +1,6 @@
 package com.dataart.risingsun.app.controller.connection;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
@@ -104,9 +103,9 @@ public class DAOManager {
      * @return
      */
     @SuppressWarnings("unchecked")
-    public static <T extends RSInstance> Collection<T> getInstanceList(Class<T> instanceClass, Criterion... criterion)
+    public static <T extends RSInstance> List<T> getInstanceList(Class<T> instanceClass, Criterion... criterion)
     {
-	Collection<T> list = new ArrayList<>();
+	List<T> list = new ArrayList<>();
 	Session session = null;
 	Criteria criteria = null;
 	try

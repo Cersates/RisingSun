@@ -1,43 +1,83 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<c:forEach items="${article_list.list}" varStatus="vs">
-	<div class="article">
-		<div class="date">
-			<p class="day">
-				<span>18th</span>
-			</p>
-			<p>02/08</p>
-		</div>
-		<h3>
-			<a href="#">My newest article about&hellip;</a>
-		</h3>
-		<div class="info">
-			<div class="info-in">
-				<p>
-					In <a href="#">Category4</a> &nbsp;|&nbsp; Author <a href="#">Name</a>
-					&nbsp;|&nbsp; <a href="#">23 comments</a> &nbsp;|&nbsp; <a href="#">RSS
-						comments</a>
-				</p>
-			</div>
-		</div>
+<%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<c:choose>
+	<c:when test="${ fn:length(article_list) > '0' }">
+		<c:forEach var="article_obj" items="${article_list}" varStatus="vs">
+			<div class="article">
+				<div class="date">
+					<p class="day">
+						<span> <f:formatDate type="date"
+								value="${ article_obj.date }" pattern="dd" /> th
+						</span>
+					</p>
+					<p>
+						<f:formatDate type="date" value="${ article_obj.date }"
+							pattern="MM/yyyy" />
+					</p>
+					<p class="day">at</p>
+					<p>
+						<f:formatDate type="time" value="${ article_obj.date }"
+							pattern="HH:MM" />
+					</p>
+				</div>
+				<!-- --------------------------------------------------------- Title -->
+				<h3>
+					<a href="#"><c:out value="${ article_obj.title }" />&hellip;</a>
+				</h3>
+				<!-- --------------------------------------------------------- Description area -->
+				<div id="description">
+					<c:if test="${ fn:length(article_obj.description) > 0 }">
+						<p>(
+							<c:out value="${ article_obj.description }" />)
+						</p>
+					</c:if>
+				</div>
 
-		<p>${msg}</p>
-		<p>
-			<img class="float" src="img/flower.jpg" alt="flower" width="128"
-				height="96" /> Lorem ipsum dolor sit amet, consectetuer adipiscing
-			elit. Nam vulputate turpis vel mauris. Aenean sapien mauris, ultrices
-			sed, rhoncus at, pellentesque sed, lectus. In hac habitasse platea
-			dictumst. Donec adipiscing, mauris eu varius consectetuer, nulla orci
-			iaculis neque, ac rhoncus est lacus in augue. Maecenas ac dolor.
-			Vestibulum semper eleifend arcu. Sed leo. Suspendisse vestibulum
-			dolor sed eros ullamcorper tincidunt. Nulla at sapien vel mi
-			fermentum adipiscing. Sed sit amet orci vel nisl mattis pretium.
-			Nullam tristique mi eu magna. Duis odio ante, suscipit non, iaculis
-			et, porta malesuada, neque. Suspendisse fringilla, purus dictum
-			pretium nonummy, leo leo ullamcorper felis, id semper quam neque sit
-			amet ante. Ut nec mi. Ut congue massa fermentum justo.
-		</p>
-		<p class="continue">
-			[<a href="#">Continue&hellip;</a>]
-		</p>
-	</div>
-</c:forEach>
+				<!------------------------------------------------------------ Content area -->
+				<c:set var="text" value="${article_obj.content}" />
+				<c:set var="substring_delimiter" value="1000" />
+				<p>
+					<c:choose>
+						<c:when test="${ fn:length(text) <= substring_delimiter }">
+							<c:out value="${text}"></c:out>
+						</c:when>
+						<c:otherwise>
+							<c:out value="${fn:substring(text, 0, substring_delimiter)}" />
+							<span id="spoiler_${ article_obj.id }" style="display: none">
+								<c:out
+									value="${ fn:substring(text, substring_delimiter, fn:length(text)) }" />
+							</span>
+						</c:otherwise>
+					</c:choose>
+				</p>
+				<c:if test="${ fn:length(text) >= substring_delimiter }">
+					<p class="continue">
+						[<a title="Click to show / hide content"
+							onclick="if(document.getElementById('spoiler_${ article_obj.id }') .style.display=='none') 
+						{
+							document.getElementById('spoiler_${ article_obj.id }').style.display=''
+						}
+						else
+						{
+							document.getElementById('spoiler_${ article_obj.id }').style.display='none'
+						}">Continue&hellip;
+						</a>]
+					</p>
+				</c:if>
+				<div class="info">
+					<div class="info-in">
+						<p>
+							Author <a href="#"><c:out
+									value="${ article_obj.author.name }" /></a> &nbsp;|&nbsp; <a
+								href="#">23 comments</a> &nbsp;
+						</p>
+					</div>
+				</div>
+			</div>
+		</c:forEach>
+	</c:when>
+	<c:otherwise>
+		<p>There are no any articles on the first page</p>
+	</c:otherwise>
+</c:choose>
